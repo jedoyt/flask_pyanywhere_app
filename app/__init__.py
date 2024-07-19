@@ -10,3 +10,6 @@ app.register_blueprint(flames_app.bp)
 
 from . import reformed_pilgrim
 app.register_blueprint(reformed_pilgrim.bp)
+
+from . import temp_content
+app.register_blueprint(temp_content.bp)
