@@ -7,9 +7,9 @@ def match_results(yourName,crushName):
     Enter the names and find out how you two are destined to be.
     '''
     # split characters and turn into list
-    yourNameChars = [char for char in yourName.lower()]
+    yourNameChars = [char for char in yourName.lower() if char != " "]
 
-    crushNameChars = [char for char in crushName.lower()]
+    crushNameChars = [char for char in crushName.lower() if char != " "]
 
     try:
         yourNameChars.remove(' ')
@@ -32,7 +32,7 @@ def match_results(yourName,crushName):
 
     # THE "DICTIONARY" OF DESTINY
     destinyKeys = ["F","L","A","M","E","S"]
-    destiny = {"F":"to be just FRIENDS!",
+    destiny = {"F":"to be FRIENDS!",
                "L":"to be LOVERS!",
                "A":"to have AFFECTIONS for each other!",
                "M":"to end up in MARRIAGE!",
