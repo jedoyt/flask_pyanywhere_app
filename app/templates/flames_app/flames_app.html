@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}FLAMES{% endblock %}
+{% block content %}
+<div class="container card" style="width: 25rem;">
+    <hr class="my-4">
+    <h3 align="center" class="card-title">F.L.A.M.E.S. Match!</h3>
+    <h5 align="center" class="card-title">The Tinder of 90's kids</h5>
+    <hr class="my-4">
+    <small class="card-text">Try to experiment using full names or just first names for different results so that hope is
+      not all gone!</small>
+    <hr class="my-4">
+    <form method="POST">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Your Name" name="your-name">
+      </div>
+      <br>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Crush's Name" name="crush-name">
+      </div>
+      <br>
+      <div class="form-group">
+        <button class="btn btn-danger" type="submit">Matchmake!</button>
+      </div>
+    </form>
+    <br>
+    <div class="card" method="GET">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ results_header }}
+        </h5>
+        <hr>
+        <blockquote class="blockquote mb-0">
+          <p>{{ results }}</p>
+        </blockquote>
+      </div>
+    </div>
+    <hr>
+  </div>
+{% endblock %}
