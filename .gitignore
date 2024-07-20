@@ -2,3 +2,4 @@
 venv/
 **/.DS_Store
 flask_pyanywhere_app.code-workspace
+pymongo-quickstart/

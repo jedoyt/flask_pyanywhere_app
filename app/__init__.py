@@ -1,7 +1,12 @@
+import os
 from flask import Flask
 
 app = Flask(__name__)
 
+### DATABASE SETUP ###
+
+
+### BLUEPRINT REGISTRATIONS ###
 from . import core
 app.register_blueprint(core.bp)
 
