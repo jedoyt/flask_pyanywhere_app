@@ -27,7 +27,7 @@
                         <a class="nav-link active" aria-current="page" href="{{ url_for('core.index') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="{{ url_for('core.about') }}">About</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -37,10 +37,9 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ url_for('flames_app.matchmake') }}">FLAMES</a></li>
                             <li><a class="dropdown-item" href="{{ url_for('reformed_pilgrim.index') }}">Reformed Pilgrim</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="{{ url_for('temp_content.index') }}">CDG Material</a></li>
+                            <li><a class="dropdown-item" href="https://jaupy-basic-ocr-app.streamlit.app/" target="_blank">OCR Text Extraction App</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="https://jaupy-basic-ocr-app.streamlit.app/" target="_blank">OCR Text Extraction App</a></li>
                         </ul>
                     </li>
                     <!--
@@ -52,7 +51,9 @@
             </div>
         </div>
     </nav>
-    <hr class="container-fluid">
+    <div class="container-fluid">
+        <hr>
+    </div>
     <div class="container-fluid">{% block content %}{% endblock %}</div>
 </body>
 
