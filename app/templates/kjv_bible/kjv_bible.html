@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}KJV Bible{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">The Holy Bible in {{ metadata['name'] }} ({{ metadata['year'] }})</h3>
+        <p class="card-text"><small>{{ metadata["copyright_statement"] }}</small></p>
+        <footer class="card-text">
+            <small>
+                This app loads the Bible in JSON format. Though this document is a public domain, I do believe my
+                source,
+                <a href="https://www.biblesupersearch.com/bible-downloads/" target="_blank">Bible Super Search</a>,
+                deserves citation credit.
+            </small>
+        </footer>
+    </div>
+</div>
+<hr>
+<div class="card">
+    <div class="card-body">
+        <form method="POST" action="">
+            <div class="row">
+                <div class="input-group col">
+                    <select class="form-select form-select-sm" name="book-name">
+                        <option selected>{{ book_selected }}</option>
+                        {% for book, chapters in books_chapters.items() %}
+                        <option value="{{ book }}">{{ book }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col">
+                    <!-- <select class="form-select form-select-sm" name="chapter-select">
+                        <option selected>{{ chapter_selected }}</option>
+                        {% if book_selected != 'Choose a book' %}
+                        {% for chapter in range(1, books_chapters[request.form['book-name']]+1) %}
+                        <option value="{{ chapter }}">{{ chapter }}</option>
+                        {% endfor %}
+                        {% endif %}
+                    </select> -->
+                </div>
+
+                <div class="input-group col">
+                    <input type="submit" class="btn btn-outline-secondary" value="Confirm">
+                </div>
+            </div>
+            <br>
+            <ul class="list-group list-group-flush">
+                {% for verse_meta in verses %}
+                    {% if verse_meta['verse'] == 1 %}
+                        <li class="list-group-item"><h5>{{ verse_meta['book_name'] }} {{ verse_meta['chapter'] }}</h5> <sup>{{ verse_meta['verse'] }}</sup>{{ verse_meta['text'] }}</li>
+                    {% else %}
+                        <li class="list-group-item"><sup>{{ verse_meta['verse'] }}</sup>{{ verse_meta['text'] }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -18,3 +18,6 @@ app.register_blueprint(reformed_pilgrim.bp)
 
 from . import temp_content
 app.register_blueprint(temp_content.bp)
+
+from . import kjv_bible
+app.register_blueprint(kjv_bible.bp)
