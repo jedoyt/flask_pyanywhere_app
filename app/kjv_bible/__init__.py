@@ -14,20 +14,25 @@ def index():
     kjv_meta = kjv["metadata"]
     kjv_verses = kjv["verses"]
     book_selected = "Choose a book"
-    chapter_selected = '-'
-    chapter_list = ['-']
+    chapter_selected = 1
+    chapter_list = [1]
     filtered_verses = [{'-':''}]
     if request.method == "POST":
         book_selected = request.form['book-name']
-        # chapter_list = [i for i in range(1, books_chapters[book_selected] + 1)]
-        # chapter_selected = request.form['chapter-select']
+        chapter_list = [i for i in range(1, books_chapters[book_selected] + 1)]
+        chapter_selected = int(request.form['chapter-select'])
         # print(f"Book: {book_selected} | Chapter_list: {chapter_list}\n Chapter Selected: {chapter_selected}")
-        filtered_verses = [verse_meta for verse_meta in kjv_verses if verse_meta['book_name'] == book_selected]
+        # filtered_verses = [verse_meta for verse_meta in kjv_verses if verse_meta['book_name'] == book_selected and verse_meta['chapter'] == chapter_selected]
+        filtered_verses = list()
+        for verse_meta in kjv_verses:
+            if verse_meta['book_name'] == book_selected and verse_meta['chapter'] == chapter_selected:
+                filtered_verses.append(verse_meta)
+        # pprint(filtered_verses)
         # return redirect(url_for('kjv_bible.index'))
-        return render_template(
-            'kjv_bible/kjv_bible.html', chapter_selected=chapter_selected, book_selected=book_selected, 
-            chapter_list=chapter_list, books_chapters=books_chapters, metadata=kjv_meta, verses=filtered_verses
-            )
+        # return render_template(
+        #     'kjv_bible/kjv_bible.html', chapter_selected=chapter_selected, book_selected=book_selected, 
+        #     chapter_list=chapter_list, books_chapters=books_chapters, metadata=kjv_meta, verses=filtered_verses
+        #     )
     
     return render_template(
         'kjv_bible/kjv_bible.html', chapter_selected=chapter_selected, book_selected=book_selected, 
