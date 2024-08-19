@@ -4,3 +4,15 @@ venv/
 flask_pyanywhere_app.code-workspace
 test.py
 /test_app/
+
+*.pyc
+
+instance/
+
+.pytest_cache/
+.coverage
+htmlcov/
+
+dist/
+build/
+*.egg-info/

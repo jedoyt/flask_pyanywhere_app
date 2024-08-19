@@ -1,10 +1,22 @@
 import os
 from flask import Flask
+from app.db import close_db, init_db_command, init_app
 
 app = Flask(__name__)
 
-### DATABASE SETUP ###
 
+### CONFIGS ###
+# ensure the instance folder exists
+try:
+    os.makedirs(app.instance_path)
+except OSError:
+    pass
+app.config['SECRET_KEY'] = 'dev'
+app.config['DATABASE'] = os.path.join(app.instance_path, 'flask_app.sqlite')
+
+init_app(app=app)
+# app.teardown_appcontext(close_db)
+# app.cli.add_command(init_db_command)
 
 ### BLUEPRINT REGISTRATIONS ###
 from . import core
