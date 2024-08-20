@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %} Register {% endblock %}
+
+{% block content %}
+<div class="card mx-auto" style="width: 21rem;">
+    <div class="card-body">
+        <h5 class="card-title text-center">Registration Page</h5>
+        {% if error %}
+        <div class="text-center"><small>{{ error }}</small></div>
+        {% endif %}
+        <div class="card-body">
+            <form method="post">
+                <div class="mb-3">
+                    <label for="staticEmail" class="form-label">Email</label>
+                    <input name="email" type="email" class="form-control" id="staticEmail" placeholder="email@example.com" required>
+                </div>
+                <div class="mb-3">
+                    <label for="userName" class="form-label">Username</label>
+                    <input name="username" type="text" class="form-control" id="userName" placeholder="fname_lname (suggestion)" required>
+                </div>
+                <div class="mb-3">
+                    <label for="inputPassword" class="form-label">Password</label>
+                    <input name="password" type="password" class="form-control" id="inputPassword" required>
+                </div>
+                <div class="mb-3">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input name="full_name" type="text" class="form-control" id="fullName" placeholder="FirstName MI LastName" required>
+                </div>
+                <div class="mb-3 text-center">
+                    <button type="submit" class="btn btn-outline-danger">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

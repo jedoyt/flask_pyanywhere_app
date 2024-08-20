@@ -2,12 +2,28 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 <div class="card">
-    <div class="card-body">
+    <div class="card-body text-center">
         <h1 class="card-title">jauPy blogs!</h1>
         <p class="card-text">
-            (This homepage used to contain my blogs but it's under reconstruction right now)
+            <small>A personal blogging and portfolio website</small>
         </p>
     </div>
 </div>
-<hr>
+<br>
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <h6 class="card-title">Blog Title</h6>
+            <small>by: user, 08/20/2024 1:04 AM</small>
+            <p class="card-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Ab veniam nulla hic reiciendis odit deserunt quod. Sunt vero nam doloremque,
+                repellat praesentium velit architecto rerum eos temporibus, quae provident nostrum?
+            </p>
+            {% if g.user %}
+            <a class="btn btn-outline-light" href="#">Edit Blog</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}

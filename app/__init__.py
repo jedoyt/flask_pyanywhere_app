@@ -22,6 +22,9 @@ init_app(app=app)
 from . import core
 app.register_blueprint(core.bp)
 
+from . import auth
+app.register_blueprint(auth.bp)
+
 from . import flames_app
 app.register_blueprint(flames_app.bp)
 

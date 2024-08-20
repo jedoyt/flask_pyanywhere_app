@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+<div class="card mx-auto" style="width: 21rem;">
+    <div class="card-body">
+        <h5 class="card-title text-center">Login</h5>
+        {% if error %}
+        <div class="text-center"><small>{{ error }}</small></div>
+        {% endif %}
+        <div class="card-body">
+            <form method="post">
+                <div class="mb-3">
+                    <label for="staticEmail" class="form-label">Email</label>
+                    <input name="email" type="email" class="form-control" id="staticEmail" placeholder="email@example.com" required>
+                </div>
+                <div class="mb-3">
+                    <label for="inputPassword" class="form-label">Password</label>
+                    <input name="password" type="password" class="form-control" id="inputPassword" required>
+                </div>
+                <div class="mb-3 text-center">
+                    <button type="submit" class="btn btn-outline-primary">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

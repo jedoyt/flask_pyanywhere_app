@@ -23,9 +23,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% if g.user %}
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ url_for('core.index') }}">Home</a>
+                        <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Compose Blog</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+                    </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('core.about') }}">About</a>
                     </li>
@@ -37,10 +49,15 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ url_for('flames_app.matchmake') }}">FLAMES</a></li>
                             <li><a class="dropdown-item" href="{{ url_for('kjv_bible.index') }}">KJV Bible</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('reformed_pilgrim.index') }}">Reformed Pilgrim</a></li>
-                            <li><a class="dropdown-item" href="https://jaupy-basic-ocr-app.streamlit.app/" target="_blank">OCR Text Extraction App</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{{ url_for('temp_content.index') }}" target="_blank">Temporary Content</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('reformed_pilgrim.index') }}">Reformed
+                                    Pilgrim</a></li>
+                            <li><a class="dropdown-item" href="https://jaupy-basic-ocr-app.streamlit.app/"
+                                    target="_blank">OCR Text Extraction App</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{{ url_for('temp_content.index') }}"
+                                    target="_blank">Temporary Content</a></li>
                         </ul>
                     </li>
                     <!--
@@ -49,6 +66,11 @@
                     </li>
                     -->
                 </ul>
+                {% if g.user %}
+                    <div class="d-flex">
+                        <small>logged user: {{ g.user['username'] }}</small>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </nav>
@@ -56,6 +78,9 @@
         <hr>
     </div>
     <div class="container-fluid">{% block content %}{% endblock %}</div>
+    <div class="container-fluid">
+        <hr>
+    </div>
 </body>
 
 </html>
