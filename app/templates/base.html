@@ -68,7 +68,10 @@
                 </ul>
                 {% if g.user %}
                     <div class="d-flex">
-                        <a href="{{ url_for('core.user_page', id=session['user_id']) }}"><small>logged user: {{ g.user['username'] }}</small></a>
+                        <div class="row">
+                            <small class="col">User:</small>
+                            <small class="col"><a href="{{ url_for('core.user_page', id=session['user_id']) }}"> {{ g.user['username'] }}</a></small>
+                        </div>
                     </div>
                 {% endif %}
             </div>

@@ -1,9 +1,9 @@
 import os
+
 from flask import Flask
 from app.db import close_db, init_db_command, init_app
 
 app = Flask(__name__)
-
 
 ### CONFIGS ###
 # ensure the instance folder exists
@@ -27,6 +27,9 @@ app.register_blueprint(auth.bp)
 
 from . import blog
 app.register_blueprint(blog.bp)
+
+from . import error_handlers
+app.register_blueprint(error_handlers.bp)
 
 from . import flames_app
 app.register_blueprint(flames_app.bp)

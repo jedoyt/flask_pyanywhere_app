@@ -10,12 +10,17 @@
     </div>
 </div>
 <br>
+{% if posts %}
 {% for post in posts %}
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
             <h5 class="card-subtitle">{{ post['title'] }}</h5>
-            <p class="card-text"><small>by: {{ post['full_name'] }}, {{ post['created'].strftime('%B %-d, %Y, %-I:%M %p') }}</small></p>
+            <p class="card-text">
+                <small>by: {{ post['full_name'] }}, 
+                    {{ post['created'].strftime('%B %-d, %Y, %-I:%M %p') }}
+                </small>
+            </p>
             <p class="card-text">
                 {{ post['content'] }}
             </p>
@@ -27,4 +32,21 @@
 </div>
 <br>
 {% endfor %}
+<div class="container-fluid mx-auto">
+    {% if total_pages > 1 %}
+    <ul class="pagination">
+        {% if current_page > 1 %}
+        <li class="page-item"><a class="page-link" href="/?page=1">First</a></li>
+        <li class="page-item"><a class="page-link" href="/?page={{ current_page - 1 }}">Previous</a></li>
+        {% endif %}
+        <li class="page-item disabled"><span class="page-link"> Page {{ current_page }} of {{ total_pages }} </span>
+        </li>
+        {% if current_page < total_pages %} <li class="page-item"><a class="page-link"
+                href="/?page={{ current_page + 1 }}">Next</a></li>
+            <li class="page-item"><a class="page-link" href="/?page={{ total_pages }}">Last</a></li>
+            {% endif %}
+    </ul>
+    {% endif %}
+</div>
+{% endif %}
 {% endblock %}

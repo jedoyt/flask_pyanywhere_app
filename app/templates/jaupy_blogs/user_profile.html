@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} User Page {% endblock %}
+
+{% block content %}
+<div class="card mx-auto" style="width: 21rem;">
+    <h5 class="card-header text-center">User Profile</h5>
+    <div class="card-body">
+        <form method="post">
+            <div class="mb-3">
+                <label for="userName" class="form-label">Username</label>
+                <textarea name="username"  class="form-control" id="userName" rows="1" required>{{ user['username'] }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for=eMail" class="form-label">Email</label>
+                <textarea name="email" type="email" class="form-control" id="eMail" rows="1" required>{{ user['email'] }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for=fullName" class="form-label">Full Name</label>
+                <textarea name="full_name" type="email" class="form-control" id="fullName" rows="1" required>{{ user['full_name'] }}</textarea>
+            </div>
+            <div class="mb-3 text-center">
+                <button class="btn btn-outline-light" type="submit">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

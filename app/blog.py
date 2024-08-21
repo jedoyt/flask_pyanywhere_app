@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Blueprint, flash, g, redirect, render_template, request, url_for
 
 from werkzeug.exceptions import abort, NotFound, Forbidden
@@ -13,6 +14,7 @@ bp = Blueprint('blog', __name__)
 @login_required
 def compose_blog():
     if request.method == 'POST':
+        created = datetime.now()
         title = request.form['title']
         content = request.form['content']
         error = None
@@ -25,8 +27,8 @@ def compose_blog():
         else:
             db = get_db()
             db.execute(
-                'INSERT INTO post (title, content, user_id)'
-                ' VALUES (?, ?, ?)', (title, content, g.user['id'])
+                'INSERT INTO post (created, title, content, user_id)'
+                ' VALUES (?, ?, ?, ?)', (created, title, content, g.user['id'])
             )
             db.commit()
             return redirect(url_for('core.index'))
