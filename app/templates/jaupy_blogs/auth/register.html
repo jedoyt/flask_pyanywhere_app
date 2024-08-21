@@ -7,7 +7,7 @@
     <div class="card-body">
         <h5 class="card-title text-center">Registration Page</h5>
         {% if error %}
-        <div class="text-center"><small>{{ error }}</small></div>
+        <p class="card-text text-center">{{ error }}</p>
         {% endif %}
         <div class="card-body">
             <form method="post">
@@ -17,7 +17,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="userName" class="form-label">Username</label>
-                    <input name="username" type="text" class="form-control" id="userName" placeholder="fname_lname (suggestion)" required>
+                    <input name="username" type="text" class="form-control" id="userName" required>
                 </div>
                 <div class="mb-3">
                     <label for="inputPassword" class="form-label">Password</label>

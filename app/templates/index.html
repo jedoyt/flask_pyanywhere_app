@@ -10,20 +10,21 @@
     </div>
 </div>
 <br>
+{% for post in posts %}
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
-            <h6 class="card-title">Blog Title</h6>
-            <small>by: user, 08/20/2024 1:04 AM</small>
+            <h5 class="card-subtitle">{{ post['title'] }}</h5>
+            <p class="card-text"><small>by: {{ post['full_name'] }}, {{ post['created'].strftime('%B %-d, %Y, %-I:%M %p') }}</small></p>
             <p class="card-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Ab veniam nulla hic reiciendis odit deserunt quod. Sunt vero nam doloremque,
-                repellat praesentium velit architecto rerum eos temporibus, quae provident nostrum?
+                {{ post['content'] }}
             </p>
-            {% if g.user %}
-            <a class="btn btn-outline-light" href="#">Edit Blog</a>
+            {% if g.user['id'] == post['user_id'] %}
+            <a class="btn btn-outline-light" href="{{ url_for('blog.edit_blog', id=post['id']) }}">Edit Blog</a>
             {% endif %}
         </div>
     </div>
 </div>
+<br>
+{% endfor %}
 {% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Compose Blog {% endblock %}
+
+{% block content %}
+<div class="card">
+    <h5 class="card-header text-center">Compose Blog</h5>
+    <div class="card-body">
+        <form method="post">
+            <div class="mb-3">
+                <label for="blogTitle" class="form-label">Title (optional)</label>
+                <input name="title" type="text" class="form-control" id="blogTitle" placeholder="Blog Title Here (optional)">
+            </div>
+            <div class="mb-3">
+                <label for="blogContent" class="form-label">Title (optional)</label>
+                <textarea name="content" type="text" class="form-control" id="blogContent" rows="5" placeholder="Blog Content Here (required)" required></textarea>
+            </div>
+            <div class="mb-3 text-center">
+                <button class="btn btn-outline-light" type="submit">Post</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

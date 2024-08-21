@@ -25,6 +25,9 @@ app.register_blueprint(core.bp)
 from . import auth
 app.register_blueprint(auth.bp)
 
+from . import blog
+app.register_blueprint(blog.bp)
+
 from . import flames_app
 app.register_blueprint(flames_app.bp)
 

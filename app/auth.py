@@ -1,4 +1,4 @@
-import functools
+import functools, re
 
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -20,6 +20,12 @@ def register():
 
         if not username:
             error = 'Username is required.'
+        elif not valid_username(username=username):
+            error = "Invalid username!\nUse only characters from 'a-z', 'A-Z', '0-9', and '_' (underscore).\nNo space(s) allowed."
+            session['registration_error'] = error
+            return render_template(
+                'jaupy_blogs/auth/register.html', error=session['registration_error']
+                )
         elif not password:
             error = 'Password is required.'
 
@@ -39,6 +45,13 @@ def register():
             return redirect(url_for('auth.login'))
 
     return render_template('jaupy_blogs/auth/register.html')
+
+def valid_username(username):
+    pattern = "^[a-zA-Z0-9_]+$"
+    if re.match(pattern, username):
+        return True
+    else:
+        return False
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():

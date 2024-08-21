@@ -20,7 +20,7 @@ def forbidden(error):
 
 @bp.app_errorhandler(404)
 def not_found(error):
-    error_str = "HTTP Error 404: URL Not Found"
+    error_str = "HTTP Error 404: Not Found"
     return render_template('error_page.html', error_str=error_str), 404
 
 @bp.app_errorhandler(500)
