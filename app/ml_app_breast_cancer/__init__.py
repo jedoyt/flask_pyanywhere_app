@@ -35,3 +35,7 @@ def index():
         'ml_app_breast_cancer/breast_cancer_classifier.html', 
         stats_dict=list(stats_dict.items())
         )
+
+@bp.route('/breast_cancer_dataset_info', methods=['GET', 'POST'])
+def dataset_info():
+    return render_template('ml_app_breast_cancer/dataset_info.html')

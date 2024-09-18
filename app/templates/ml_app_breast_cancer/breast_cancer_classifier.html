@@ -5,6 +5,7 @@
     <div class="card-body">
         <h5 class="card-title text-center">Breast Cancer Tumor Classifier</h5>
         <p class="card-subtitle text-center">(Supervised Machine Learning)</p>
+        <a href="{{ url_for('ml_app_breast_cancer.dataset_info') }}">Info on training dataset</a>
         {% if prediction %}
         <h3 class="card-title text-center">Tumor Classification: "{{ prediction }}"</h3>
         {% else %}
