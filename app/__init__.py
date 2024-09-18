@@ -42,3 +42,6 @@ app.register_blueprint(temp_content.bp)
 
 from . import kjv_bible
 app.register_blueprint(kjv_bible.bp)
+
+from . import ml_app_breast_cancer
+app.register_blueprint(ml_app_breast_cancer.bp)

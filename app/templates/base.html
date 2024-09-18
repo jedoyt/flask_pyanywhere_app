@@ -49,15 +49,15 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ url_for('flames_app.matchmake') }}">FLAMES</a></li>
                             <li><a class="dropdown-item" href="{{ url_for('kjv_bible.index') }}">KJV Bible</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('reformed_pilgrim.index') }}">Reformed
+                            <!-- <li><a class="dropdown-item" href="{{ url_for('reformed_pilgrim.index') }}">Reformed
                                     Pilgrim</a></li>
-                            <li><a class="dropdown-item" href="https://jaupy-basic-ocr-app.streamlit.app/"
-                                    target="_blank">OCR Text Extraction App</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
+                            <li> -->
+                                <div class="container-fluid"><hr class="dropdown-divider"></div>
                             </li>
-                            <li><a class="dropdown-item" href="{{ url_for('temp_content.index') }}"
-                                    target="_blank">Temporary Content</a></li>
+                            <li><a class="dropdown-item" href="https://jaupy-basic-ocr-app.streamlit.app/"
+                                    target="_blank">OCR Text Extraction App (External link)</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('ml_app_breast_cancer.index') }}">
+                                    Machine Learning: Breast Cancer Classifier</a></li>
                         </ul>
                     </li>
                     <!--
@@ -67,12 +67,13 @@
                     -->
                 </ul>
                 {% if g.user %}
-                    <div class="d-flex">
-                        <div class="row">
-                            <small class="col">User:</small>
-                            <small class="col"><a href="{{ url_for('core.user_page', id=session['user_id']) }}"> {{ g.user['username'] }}</a></small>
-                        </div>
+                <div class="d-flex">
+                    <div class="row">
+                        <small class="col">User:</small>
+                        <small class="col"><a href="{{ url_for('core.user_page', id=session['user_id']) }}"> {{
+                                g.user['username'] }}</a></small>
                     </div>
+                </div>
                 {% endif %}
             </div>
         </div>
