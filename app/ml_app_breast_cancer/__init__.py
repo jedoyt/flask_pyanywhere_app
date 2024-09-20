@@ -13,7 +13,7 @@ def index():
 
     if request.method == 'POST':
         # Create instance of KNN Model
-        knn_model = build_knn_model(n=10)
+        knn_model = build_knn_model(n=11)
         inputs = list()
         
         # Collect inputs from form

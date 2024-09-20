@@ -5,12 +5,15 @@
     <div class="card-body">
         <h5 class="card-title text-center">Breast Cancer Tumor Classifier</h5>
         <p class="card-subtitle text-center">(Supervised Machine Learning)</p>
-        <a href="{{ url_for('ml_app_breast_cancer.dataset_info') }}">Info on training dataset</a>
+        <p class="card-text text-center">
+            <a class="card-link" href="{{ url_for('ml_app_breast_cancer.dataset_info') }}">Info on model and dataset used</a>
+        </p>
         {% if prediction %}
         <h3 class="card-title text-center">Tumor Classification: "{{ prediction }}"</h3>
         {% else %}
         <br>
-        <small>Kindly fill up the input fields. <br>On fields that are left blank, the median value from the training dataset shall be used for prediction.</small>
+        <small>Kindly fill up the input fields. <br>On fields that are left blank, 
+            the median value from the training dataset shall be used as default for prediction.</small>
         {% endif %}
         <div><hr></div>
         <form method="post">
